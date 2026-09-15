@@ -1,5 +1,5 @@
 async function loadLeague() {
-  const url = "https://api.allorigins.win/raw?url=https://fantasy.premierleague.com/api/leagues-classic/233488/standings/";
+  const url = "https://corsproxy.io/?https://fantasy.premierleague.com/api/leagues-classic/233488/standings/";
 
   try {
     const res = await fetch(url);
