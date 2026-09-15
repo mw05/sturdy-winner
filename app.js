@@ -1,18 +1,8 @@
 async function loadLeague() {
-  const leagueId = 233488;
-  const url = `https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings/`;
+  const url = "https://api.allorigins.win/raw?url=https://fantasy.premierleague.com/api/leagues-classic/233488/standings/";
 
   try {
-    const res = await fetch(url, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "User-Agent": "Mozilla/5.0",
-        "Accept": "application/json",
-        "Cache-Control": "no-cache"
-      }
-    });
-
+    const res = await fetch(url);
     const data = await res.json();
     const standings = data.standings.results;
 
