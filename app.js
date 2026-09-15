@@ -1,5 +1,5 @@
 async function loadLeague() {
-  const url = "https://corsproxy.io/?https://fantasy.premierleague.com/api/leagues-classic/233488/standings/";
+  const url = "https://rough-frost-ba2a.wilson-matt.workers.dev/";
 
   try {
     const res = await fetch(url);
