@@ -76,7 +76,7 @@ axisLabels.forEach(l => {
     const y = yScale(d.points);
 
     const isLeft = i % 2 === 0;
-    const labelOffset = isLeft ? -40 : 40;
+    const labelOffset = isLeft ? -35 : 35;
     const lineOffset = isLeft ? -20 : 20;
 
     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -97,7 +97,7 @@ axisLabels.forEach(l => {
 
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', xPos + labelOffset);
-    text.setAttribute('y', y+7);
+    text.setAttribute('y', y+5);
     text.setAttribute('text-anchor', isLeft ? 'end' : 'start');
     text.setAttribute('font-size', '12');
     text.textContent = d.surname;
