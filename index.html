@@ -1,15 +1,20 @@
----
-layout: default
-title: League Table
----
+<!DOCTYPE html>
+<html>
+<head>
+  <title>League Table</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="app.js"></script>
+</head>
 
-<h1>League Table</h1>
+<body>
+  <h1>League Table</h1>
 
-<button onclick="loadLeague()">Load League Data</button>
+  <button onclick="loadLeague()">Load League Data</button>
 
-<table id="leagueTable"></table>
+  <table id="leagueTable"></table>
 
-<script src="app.js"></script>
-<script>
-  window.onload = loadLeague;
-</script>
+  <script>
+    window.onload = loadLeague;
+  </script>
+</body>
+</html>
