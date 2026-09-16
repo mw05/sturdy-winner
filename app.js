@@ -22,6 +22,16 @@ function renderVerticalGapChart(svgId, data) {
   // Clear previous chart
   while (svg.firstChild) svg.removeChild(svg.firstChild);
 
+const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+title.setAttribute('x', width / 2);
+title.setAttribute('y', 20);
+title.setAttribute('text-anchor', 'middle');
+title.setAttribute('font-size', '16');
+title.setAttribute('font-weight', 'bold');
+title.textContent = "Overall Points Gap";
+svg.appendChild(title);
+
+  
   // ----- Y AXIS -----
   const axis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
   axis.setAttribute('x1', xPos - 100);
@@ -47,6 +57,29 @@ function renderVerticalGapChart(svgId, data) {
     t.textContent = l.val;
     svg.appendChild(t);
   });
+
+  [ maxPoints, minPoints ].forEach(val => {
+  const y = yScale(val);
+  const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  tick.setAttribute('x1', xPos - 100);
+  tick.setAttribute('y1', y);
+  tick.setAttribute('x2', xPos - 95);
+  tick.setAttribute('y2', y);
+  tick.setAttribute('stroke', '#333');
+  tick.setAttribute('stroke-width', 1);
+  svg.appendChild(tick);
+});
+
+  const grid = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+grid.setAttribute('x1', xPos - 90);
+grid.setAttribute('y1', y);
+grid.setAttribute('x2', xPos + 90);
+grid.setAttribute('y2', y);
+grid.setAttribute('stroke', '#ddd');
+grid.setAttribute('stroke-width', 1);
+svg.appendChild(grid);
+
+
 
   // ----- POINTS + LABELS -----
   data.forEach((d, i) => {
@@ -80,6 +113,17 @@ function renderVerticalGapChart(svgId, data) {
     text.textContent = d.surname;
     svg.appendChild(text);
   });
+
+circle.addEventListener('mouseenter', () => {
+  text.style.fontWeight = 'bold';
+  circle.setAttribute('fill', '#ff5722');
+});
+
+circle.addEventListener('mouseleave', () => {
+  text.style.fontWeight = 'normal';
+  circle.setAttribute('fill', '#007bff');
+});
+
 }
 
 // ---------------------------------------------
