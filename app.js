@@ -58,18 +58,6 @@ svg.appendChild(title);
     svg.appendChild(t);
   });
 
-  [ maxPoints, minPoints ].forEach(val => {
-  const y = yScale(val);
-  const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-  tick.setAttribute('x1', xPos - 100);
-  tick.setAttribute('y1', y);
-  tick.setAttribute('x2', xPos - 95);
-  tick.setAttribute('y2', y);
-  tick.setAttribute('stroke', '#333');
-  tick.setAttribute('stroke-width', 1);
-  svg.appendChild(tick);
-});
-
   const grid = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 grid.setAttribute('x1', xPos - 90);
 grid.setAttribute('y1', y);
@@ -107,7 +95,7 @@ svg.appendChild(grid);
 
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', xPos + labelOffset);
-    text.setAttribute('y', y - 5);
+    text.setAttribute('y', y);
     text.setAttribute('text-anchor', isLeft ? 'end' : 'start');
     text.setAttribute('font-size', '12');
     text.textContent = d.surname;
