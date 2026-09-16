@@ -143,6 +143,8 @@ async function loadLeague() {
     // Render chart
     renderVerticalGapChart("overall-chart", overallData);
 
+    
+
     // Your existing table code...
     const table = document.getElementById("leagueTable");
     table.innerHTML = `
@@ -172,5 +174,15 @@ async function loadLeague() {
   } catch (err) {
     console.log("Fetch failed:", err);
   }
+}
+
+async function loadMonthlyChart() {
+  const month = Number(document.getElementById("monthSelect").value);
+
+  const url = `https://rough-frost-ba2a.wilson-matt.workers.dev/monthly?month=${month}`;
+  const res = await fetch(url);
+  const monthlyData = await res.json();
+
+  renderVerticalGapChart("monthly-chart", monthlyData, "Monthly Points Gap");
 }
 
