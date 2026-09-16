@@ -1,5 +1,5 @@
 // ---------------------------------------------
-// 1. Chart renderer (GLOBAL) — put this at top
+// CHART RENDERER (GLOBAL)
 // ---------------------------------------------
 function renderVerticalGapChart(svgId, data) {
   const svg = document.getElementById(svgId);
@@ -19,10 +19,42 @@ function renderVerticalGapChart(svgId, data) {
     return height - paddingBottom - t * (height - paddingTop - paddingBottom);
   }
 
+  // Clear previous chart
   while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-  data.forEach(d => {
+  // ----- Y AXIS -----
+  const axis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  axis.setAttribute('x1', xPos - 100);
+  axis.setAttribute('y1', paddingTop);
+  axis.setAttribute('x2', xPos - 100);
+  axis.setAttribute('y2', height - paddingBottom);
+  axis.setAttribute('stroke', '#333');
+  axis.setAttribute('stroke-width', 1);
+  svg.appendChild(axis);
+
+  const axisLabels = [
+    { val: maxPoints, y: yScale(maxPoints) },
+    { val: Math.round((maxPoints + minPoints) / 2), y: yScale((maxPoints + minPoints) / 2) },
+    { val: minPoints, y: yScale(minPoints) }
+  ];
+
+  axisLabels.forEach(l => {
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', xPos - 110);
+    t.setAttribute('y', l.y + 4);
+    t.setAttribute('text-anchor', 'end');
+    t.setAttribute('font-size', '10');
+    t.textContent = l.val;
+    svg.appendChild(t);
+  });
+
+  // ----- POINTS + LABELS -----
+  data.forEach((d, i) => {
     const y = yScale(d.points);
+
+    const isLeft = i % 2 === 0;
+    const labelOffset = isLeft ? -40 : 40;
+    const lineOffset = isLeft ? -20 : 20;
 
     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     circle.setAttribute('cx', xPos);
@@ -32,8 +64,8 @@ function renderVerticalGapChart(svgId, data) {
     svg.appendChild(circle);
 
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', xPos);
-    line.setAttribute('y1', y - 25);
+    line.setAttribute('x1', xPos + lineOffset);
+    line.setAttribute('y1', y);
     line.setAttribute('x2', xPos);
     line.setAttribute('y2', y);
     line.setAttribute('stroke', '#555');
@@ -41,15 +73,14 @@ function renderVerticalGapChart(svgId, data) {
     svg.appendChild(line);
 
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    text.setAttribute('x', xPos);
-    text.setAttribute('y', y - 30);
-    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('x', xPos + labelOffset);
+    text.setAttribute('y', y - 5);
+    text.setAttribute('text-anchor', isLeft ? 'end' : 'start');
     text.setAttribute('font-size', '12');
     text.textContent = d.surname;
     svg.appendChild(text);
   });
 }
-
 
 // ---------------------------------------------
 // 2. Your loadLeague() function
