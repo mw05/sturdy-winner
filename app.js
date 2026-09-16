@@ -97,7 +97,7 @@ axisLabels.forEach(l => {
 
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', xPos + labelOffset);
-    text.setAttribute('y', y+27);
+    text.setAttribute('y', y+7);
     text.setAttribute('text-anchor', isLeft ? 'end' : 'start');
     text.setAttribute('font-size', '12');
     text.textContent = d.surname;
