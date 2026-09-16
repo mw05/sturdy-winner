@@ -102,17 +102,18 @@ axisLabels.forEach(l => {
     text.setAttribute('font-size', '12');
     text.textContent = d.surname;
     svg.appendChild(text);
+
+      circle.addEventListener('mouseenter', () => {
+    text.style.fontWeight = 'bold';
+    circle.setAttribute('fill', '#ff5722');
   });
 
-circle.addEventListener('mouseenter', () => {
-  text.style.fontWeight = 'bold';
-  circle.setAttribute('fill', '#ff5722');
-});
-
-circle.addEventListener('mouseleave', () => {
-  text.style.fontWeight = 'normal';
-  circle.setAttribute('fill', '#007bff');
-});
+  circle.addEventListener('mouseleave', () => {
+    text.style.fontWeight = 'normal';
+    circle.setAttribute('fill', '#007bff');
+  });
+    
+  });
 
 }
 
