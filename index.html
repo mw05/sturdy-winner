@@ -13,10 +13,32 @@
   <script src="app.js"></script>
 </head>
   
-<div style="display:flex; gap:40px;">
+<div style="display:flex; gap:40px; align-items:flex-start;">
+
+  <!-- Overall chart -->
   <svg id="overall-chart" width="300" height="600"></svg>
-  <svg id="monthly-chart" width="300" height="600"></svg>
+
+  <!-- Monthly chart + selector -->
+  <div>
+    <label for="monthSelect" style="font-weight:bold;">Select Month:</label><br>
+   <select id="monthSelect">
+  <option value="1">August</option>
+  <option value="2">September</option>
+  <option value="3">October</option>
+  <option value="4">November</option>
+  <option value="5">December</option>
+  <option value="6">January</option>
+  <option value="7">February</option>
+  <option value="8">March</option>
+  <option value="9">April</option>
+  <option value="10">May</option>
+    </select>
+
+    <svg id="monthly-chart" width="300" height="600" style="margin-top:10px;"></svg>
+  </div>
+
 </div>
+
 
 <body>
   <h1>League Table</h1>
