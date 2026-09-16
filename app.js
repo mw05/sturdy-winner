@@ -42,11 +42,17 @@ svg.appendChild(title);
   axis.setAttribute('stroke-width', 1);
   svg.appendChild(axis);
 
-  const axisLabels = [
-    { val: maxPoints, y: yScale(maxPoints) },
-    { val: Math.round((maxPoints + minPoints) / 2), y: yScale((maxPoints + minPoints) / 2) },
-    { val: minPoints, y: yScale(minPoints) }
-  ];
+const steps = 6; // 6 intervals = 7 ticks
+const axisLabels = [];
+
+for (let i = 0; i <= steps; i++) {
+  const val = minPoints + (i * (maxPoints - minPoints) / steps);
+  axisLabels.push({
+    val: Math.round(val),
+    y: yScale(val)
+  });
+}
+
 
 axisLabels.forEach(l => {
   const grid = document.createElementNS('http://www.w3.org/2000/svg', 'line');
