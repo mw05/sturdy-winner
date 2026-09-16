@@ -48,24 +48,26 @@ svg.appendChild(title);
     { val: minPoints, y: yScale(minPoints) }
   ];
 
-  axisLabels.forEach(l => {
-    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    t.setAttribute('x', xPos - 110);
-    t.setAttribute('y', l.y + 4);
-    t.setAttribute('text-anchor', 'end');
-    t.setAttribute('font-size', '10');
-    t.textContent = l.val;
-    svg.appendChild(t);
-  });
-
+axisLabels.forEach(l => {
   const grid = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-grid.setAttribute('x1', xPos - 90);
-grid.setAttribute('y1', y);
-grid.setAttribute('x2', xPos + 90);
-grid.setAttribute('y2', y);
-grid.setAttribute('stroke', '#ddd');
-grid.setAttribute('stroke-width', 1);
-svg.appendChild(grid);
+  grid.setAttribute('x1', xPos - 90);
+  grid.setAttribute('y1', l.y);
+  grid.setAttribute('x2', xPos + 90);
+  grid.setAttribute('y2', l.y);
+  grid.setAttribute('stroke', '#ddd');
+  grid.setAttribute('stroke-width', 1);
+  svg.appendChild(grid);
+
+  // LABEL (your original code)
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  t.setAttribute('x', xPos - 110);
+  t.setAttribute('y', l.y + 4);
+  t.setAttribute('text-anchor', 'end');
+  t.setAttribute('font-size', '10');
+  t.textContent = l.val;
+  svg.appendChild(t);
+});
+
 
 
 
