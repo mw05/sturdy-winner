@@ -42,7 +42,7 @@ svg.appendChild(title);
   axis.setAttribute('stroke-width', 1);
   svg.appendChild(axis);
 
-const steps = 6; // 6 intervals = 7 ticks
+const steps = 8; // 8 intervals = 9 ticks
 const axisLabels = [];
 
 for (let i = 0; i <= steps; i++) {
