@@ -1,29 +1,15 @@
 ---
 layout: default
+title: League Table
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>League Table</title>
+<h1>League Table</h1>
 
-    <!-- Your custom stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+<button onclick="loadLeague()">Load League Data</button>
 
-    <!-- Your JS -->
-    <script src="app.js"></script>
-</head>
-<body>
+<table id="leagueTable"></table>
 
-  <h1>FPL League Viewer</h1>
-  <button onclick="loadLeague()">Load League Data</button>
-  <table id="leagueTable"></table>
-
-  <script src="app.js"></script>
-  <script>
+<script src="app.js"></script>
+<script>
   window.onload = loadLeague;
 </script>
-
-</body>
-</html>
