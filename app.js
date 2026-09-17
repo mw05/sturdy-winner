@@ -28,7 +28,7 @@ title.setAttribute('y', 20);
 title.setAttribute('text-anchor', 'middle');
 title.setAttribute('font-size', '16');
 title.setAttribute('font-weight', 'bold');
-title.textContent = "Overall Points Gap";
+//title.textContent = "Overall Points Gap";
 svg.appendChild(title);
 
   
@@ -141,7 +141,7 @@ async function loadLeague() {
     }));
 
     // Render chart
-    renderVerticalGapChart("overall-chart", overallData);
+    renderVerticalGapChart("overall-chart", overallData, "Total Points Gap");
 
     
 
