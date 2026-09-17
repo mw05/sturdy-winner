@@ -1,7 +1,7 @@
 // ---------------------------------------------
 // CHART RENDERER (GLOBAL)
 // ---------------------------------------------
-function renderVerticalGapChart(svgId, data) {
+function renderVerticalGapChart(svgId, data, chartTitle) {
   const svg = document.getElementById(svgId);
   const width = svg.getAttribute('width');
   const height = svg.getAttribute('height');
@@ -28,7 +28,7 @@ title.setAttribute('y', 20);
 title.setAttribute('text-anchor', 'middle');
 title.setAttribute('font-size', '16');
 title.setAttribute('font-weight', 'bold');
-//title.textContent = "Overall Points Gap";
+title.textContent = chartTitle;
 svg.appendChild(title);
 
   
