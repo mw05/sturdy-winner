@@ -135,13 +135,8 @@ async function loadLeague() {
     const standings = data.standings.results;
 
     // Build chart data
+    
     const overallData = standings.map(s => ({
-      surname: s.player_name.split(" ").slice(-1)[0],
-      points: s.total
-    }));
-
-    const overallData = standings
-  .map(s => ({
     surname: s.player_name.split(" ").slice(-1)[0],
     points: s.total
   }))
