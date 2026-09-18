@@ -18,21 +18,29 @@ th, td {
 
 // Month Selector //
 .month-select {
-  padding: 6px 10px;
-  font-size: 14px;
+  appearance: none;            /* Remove default browser styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 10px 14px;
+  font-size: 15px;
   border-radius: 6px;
-  border: 1px solid #888;
-  background: #fff;
+  border: 1px solid #bbb;
+  background: #fff url('data:image/svg+xml;utf8,<svg fill="%23666" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 20,0 10,10"/></svg>') no-repeat right 10px center;
+  background-size: 12px;
   cursor: pointer;
+  transition: all 0.15s ease;
+  width: 160px;
 }
 
 .month-select:hover {
   border-color: #007bff;
+  background-color: #f7faff;
 }
 
 .month-select:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 3px rgba(0, 123, 255, 0.6);
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
 }
 
