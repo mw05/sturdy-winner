@@ -12,14 +12,10 @@
 
   <script src="app.js"></script>
 </head>
-  
-<div style="display:flex; gap:40px; align-items:flex-start;">
 
-  <!-- Overall chart -->
-  <svg id="overall-chart" width="300" height="600"></svg>
 
   <!-- Monthly chart + selector -->
-  <div>
+  <div style="margin-bottom:20px; display:flex; align-items:center; gap:10px;">
     <label for="monthSelect" style="font-weight:bold;">Select Month:</label><br>
    <select id="monthSelect">
   <option value="1">August</option>
@@ -33,8 +29,12 @@
   <option value="9">April</option>
   <option value="10">May</option>
     </select>
+  
+<div style="display:flex; gap:40px; align-items:flex-start;">
 
-    <svg id="monthly-chart" width="300" height="600" style="margin-top:10px;"></svg>
+  <!-- Overall chart -->
+  <svg id="overall-chart" width="300" height="600"></svg>
+  <svg id="monthly-chart" width="300" height="600"></svg>
   </div>
 
 </div>
