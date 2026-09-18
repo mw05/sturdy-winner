@@ -78,10 +78,10 @@ axisLabels.forEach(l => {
 
 
   // ----- POINTS + LABELS -----
-  data.forEach((d, i) => {
+  data.forEach((d) => {
     const y = yScale(d.points);
 
-    const isLeft = i % 2 === 0;
+    const isLeft = d.localIndex % 2 === 0;
     const labelOffset = isLeft ? -35 : 35;
     const lineOffset = isLeft ? -20 : 20;
 
@@ -140,6 +140,16 @@ async function loadLeague() {
       points: s.total
     }));
 
+    const overallData = standings
+  .map(s => ({
+    surname: s.player_name.split(" ").slice(-1)[0],
+    points: s.total
+  }))
+  .sort((a, b) => b.points - a.points);
+
+overallData.forEach((p, i) => p.localIndex = i);
+
+
     // Render chart
     renderVerticalGapChart("overall-chart", overallData, "Total Points Gap");
 
@@ -183,6 +193,9 @@ async function loadMonthlyChart() {
   const res = await fetch(url);
   const monthlyData = await res.json();
 
+monthlyData.sort((a, b) => b.points - a.points);
+monthlyData.forEach((p, i) => p.localIndex = i);
+  
   renderVerticalGapChart("monthly-chart", monthlyData, "Monthly Points Gap");
 }
 
